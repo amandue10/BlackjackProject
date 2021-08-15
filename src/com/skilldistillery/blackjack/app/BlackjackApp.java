@@ -2,6 +2,8 @@ package com.skilldistillery.blackjack.app;
 
 import java.util.Scanner;
 
+import com.skilldistillery.blackjack.game.BlackjackTable;
+
 public class BlackjackApp {
 
 	public static void main(String[] args) {
@@ -30,6 +32,9 @@ public class BlackjackApp {
 // Need to add try catch block for input
 		switch (menuChoice) {
 		case 1:
+			BlackjackTable blackjackTable = new BlackjackTable();
+			blackjackTable.blackjackRules(input);
+
 			break;
 		case 2:
 			System.out.println("Thanks for playing, come again!");
@@ -40,6 +45,7 @@ public class BlackjackApp {
 			System.out.println();
 			System.out.println();
 			run();
+			break;
 		}
 
 	}
