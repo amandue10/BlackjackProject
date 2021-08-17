@@ -26,16 +26,21 @@ public abstract class Hand {
 		cards.clear();
 	}
 
+	public List<Card> getCards() {
+		return cards;
+	}
+
 	public abstract int getHandValue();
+
+	public abstract boolean isTwentyOne();
+
+	public abstract boolean isBlackjack();
+
+	public abstract boolean isBust();
 
 	@Override
 	public String toString() {
 		return "Hand [cards=" + cards + "]";
-	}
-
-	public List<Card> getCards() {
-		return cards;
-
 	}
 
 }

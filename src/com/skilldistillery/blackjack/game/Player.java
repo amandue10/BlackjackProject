@@ -6,13 +6,13 @@ public class Player {
 
 	private Hand hand;
 
+	public Player() {
+		hand = new BlackjackHand();
+	}
+
 	public Player(Hand hand) {
 		super();
 		this.hand = hand;
-	}
-
-	public Player() {
-		hand = new BlackjackHand();
 	}
 
 	public void addCardToPlayer(Card card) {
@@ -23,6 +23,22 @@ public class Player {
 	public int askHandValue() {
 
 		return hand.getHandValue();
+	}
+
+	public boolean isTwentyOne() {
+		return hand.isTwentyOne();
+	}
+
+	public boolean isBust() {
+		return hand.isBust();
+	}
+
+	public void clear() {
+		hand.clear();
+	}
+
+	public boolean isBLackjack() {
+		return hand.isBlackjack();
 	}
 
 	@Override

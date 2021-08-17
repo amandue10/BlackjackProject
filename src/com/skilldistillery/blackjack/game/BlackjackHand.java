@@ -34,6 +34,13 @@ public class BlackjackHand extends Hand {
 		return false;
 	}
 
+	public boolean isTwentyOne() {
+		if (getHandValue() == twentyOne) {
+			return true;
+		}
+		return false;
+	}
+
 	@Override
 	public String toString() {
 		return "BlackjackHand [twentyOne=" + twentyOne + "]";

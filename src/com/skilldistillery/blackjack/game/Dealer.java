@@ -16,9 +16,9 @@ public class Dealer extends Player {
 
 	public Dealer() {
 		super();
-		deck = new Deck();
-		deck.shuffle();
-		hand = new BlackjackHand();
+		this.deck = new Deck();
+		this.deck.shuffle();
+		this.hand = new BlackjackHand();
 
 	}
 
@@ -36,6 +36,16 @@ public class Dealer extends Player {
 		for (int i = 1; i < dealersHand.size(); i++) {
 			System.out.println(dealersHand.get(i));
 		}
+
+	}
+
+	@Override
+	public String toString() {
+		return "Dealer [hand=" + hand + ", deck=" + deck + "]";
+	}
+
+	public void callNewDeck() {
+		// TODO Auto-generated method stub
 
 	}
 

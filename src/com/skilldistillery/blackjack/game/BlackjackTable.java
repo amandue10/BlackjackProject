@@ -29,13 +29,13 @@ public class BlackjackTable {
 	private void playBlackjack(Scanner input) {
 
 		player.addCardToPlayer(dealer.dealCards());
-		System.out.println(player);
+		showPlayersCurrentValue();
 
 		dealer.addCardToPlayer(dealer.dealCards());
 		dealer.firstCardDown();
 
 		player.addCardToPlayer(dealer.dealCards());
-		System.out.println(player);
+		showPlayersCurrentValue();
 
 		dealer.addCardToPlayer(dealer.dealCards());
 		dealer.firstCardDown();
@@ -56,9 +56,9 @@ public class BlackjackTable {
 
 	private void hitOrStay(Scanner input) {
 		System.out.println("Would you like to hit or stay?");
-		System.out.println("Type Hit to Hit");
-		System.out.println("Type Stay to Stay");
-		System.out.println("Input is case sensetive.");
+		System.out.println("Type in the action you " + "would like to perform");
+		System.out.println();
+		System.out.println();
 		String hitOrStay = input.next();
 		input.nextLine();
 
@@ -84,10 +84,139 @@ public class BlackjackTable {
 	}
 
 	private void hit(Scanner input) {
-
+		player.addCardToPlayer(dealer.dealCards());
+		printPlayersCurrentValue();
+		checkValues(input);
+		playersTurn(input);
 	}
 
 	private void stay(Scanner input) {
+		dealersDecisions(input);
+//		printPlayersCurrentValue();
 
 	}
+
+	private void printPlayersCurrentValue() {
+		System.out.println("Player's hand value: " + player.askHandValue());
+	}
+
+	private void printDealersCurrentValue() {
+
+		System.out.println("Dealer's hand vlaue: " + dealer.askHandValue());
+
+	}
+
+	private void playersTurn(Scanner input) {
+		if (player.askHandValue() > 21) {// fix 21 to variable
+			hitOrStay(input);
+		} else {
+			checkValues(input);
+			checkForPush(input);
+		}
+	}
+
+	private void dealersDecisions(Scanner input) {
+		if (dealer.askHandValue() < 17) {// fix 17 , make variable
+			dealer.addCardToPlayer(dealer.dealCards());
+			dealer.firstCardDown();
+		} else {
+			checkValues(input);
+			checkForPush(input);
+		}
+	}
+
+	private void checkForPush(Scanner input) {
+		if (player.askHandValue() == dealer.askHandValue()) {
+			dealerShowsAllCards();
+			System.out.println("It's a tie");
+			playAgain(input);
+		}
+		checkForHighestScore(input);
+	}
+
+	private void dealerShowsAllCards() {
+		printDealersCurrentValue();
+	}
+
+	private void checkForBlackjack(Scanner input) {
+		if (player.isBLackjack()) {
+			dealerShowsAllCards();
+			System.out.println("You win");
+			playAgain(input);
+
+		} else if (dealer.isBLackjack()) {
+			dealerShowsAllCards();
+			System.out.println("Dealer wins");
+			playAgain(input);
+
+		} else if (player.isBLackjack() && dealer.isBLackjack()) {
+			dealerShowsAllCards();
+			System.out.println("Draw");
+			playAgain(input);
+
+		}
+
+	}
+
+	private void checkValues(Scanner input) {
+		if (dealer.isBust()) {
+			dealerShowsAllCards();
+			System.out.println("Dealer is over 21, you win");
+			playAgain(input);
+		}
+
+		else if (player.isBust()) {
+			dealerShowsAllCards();
+			System.out.println("Over 21. Dealer wins");
+			playAgain(input);
+		}
+
+		else if (dealer.isTwentyOne()) {
+			dealerShowsAllCards();
+			System.out.println("Dealer wins with 21, you loose");
+			playAgain(input);
+		}
+
+		else if (player.isTwentyOne()) {
+			dealerShowsAllCards();
+			System.out.println("Blackjack! You win with 21");
+			playAgain(input);
+		}
+	}
+
+	private void checkForHighestScore(Scanner input) {
+		if (player.askHandValue() > dealer.askHandValue()) {
+			dealerShowsAllCards();
+			System.out.println("You have a higher hand value, you win");
+			playAgain(input);
+		} else {
+			dealerShowsAllCards();
+			System.out.println("You have the lowest hand value, you loose ");
+			playAgain(input);
+
+		}
+	}
+
+	private void playAgain(Scanner input) {
+		System.out.println("Would you like to play again?");
+		String playAgain = input.next();
+		input.nextLine();
+
+		switch (playAgain) {
+		case "yes":
+		case "Yes":
+			player.clear();
+			dealer.clear();
+			dealer.callNewDeck();
+		case "no":
+		case "No":
+			blackjackApp.BlackjackMenu(input);
+			break;
+		default:
+			System.out.println("Invalid entry, please try again.");
+
+		}
+
+	}
+
 }
