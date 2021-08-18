@@ -33,6 +33,7 @@ public class BlackjackTable {
 
 		dealer.addCardToPlayer(dealer.dealCards());
 		dealer.firstCardDown();
+		showDealersCurrentValue();
 
 		player.addCardToPlayer(dealer.dealCards());
 		showPlayersCurrentValue();
@@ -44,20 +45,24 @@ public class BlackjackTable {
 		System.out.println();
 		System.out.println();
 		hitOrStay(input);
+		System.out.println();
 	}
 
 	private void showPlayersCurrentValue() {
 		System.out.println("Player's hand value: " + player.askHandValue());
+		System.out.println();
+
 	}
 
 	private void showDealersCurrentValue() {
 		System.out.println("Dealer's hand value: " + " " + dealer.askHandValue());
+		System.out.println();
 	}
 
 	private void hitOrStay(Scanner input) {
+		System.out.println();
 		System.out.println("Would you like to hit or stay?");
 		System.out.println("Type in the action you " + "would like to perform");
-		System.out.println();
 		System.out.println();
 		String hitOrStay = input.next();
 		input.nextLine();
@@ -92,7 +97,6 @@ public class BlackjackTable {
 
 	private void stay(Scanner input) {
 		dealersDecisions(input);
-//		printPlayersCurrentValue();
 
 	}
 
@@ -208,6 +212,8 @@ public class BlackjackTable {
 			player.clear();
 			dealer.clear();
 			dealer.callNewDeck();
+			System.out.println("New shuffled deck");
+			System.out.println(" ");
 		case "no":
 		case "No":
 			blackjackApp.BlackjackMenu(input);

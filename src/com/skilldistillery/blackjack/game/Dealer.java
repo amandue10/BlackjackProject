@@ -23,7 +23,7 @@ public class Dealer extends Player {
 	}
 
 	public Card dealCards() {
-		System.out.println("Dealer deals");
+		System.out.println("Dealer deals...");
 		Card card = deck.dealCard();
 		return card;
 	}
@@ -31,7 +31,7 @@ public class Dealer extends Player {
 	public void firstCardDown() {
 		List<Card> dealersHand = hand.getCards();
 
-		System.out.println("Dealer's hand: ");
+//		System.out.println("Dealer's hand: ");
 
 		for (int i = 1; i < dealersHand.size(); i++) {
 			System.out.println(dealersHand.get(i));
