@@ -13,12 +13,12 @@ dealer will win.
 Once the game is over, you will be asked if you want to play, again. The deck 
 of cards will shuffle and you can play, until you chose to quit. 
 
-# Technologies Used
+# Applied Concepts
 Java is the languaged used to create this program. The pillars of Object Oriented
 Programming (abstract, polymorphism, inheretence, and encapuslatation) were used. 
 Encapuslation was used to protect the deck of cards, the hand, and the player and
 dealer. Polymorphism was used to create specialized behavior of the methods being
-used. For this project we used a new technology called Enums. This was my first 
+used. For this project we used a new concept we learned called Enums. This was my first 
 working with enums.
 
 
